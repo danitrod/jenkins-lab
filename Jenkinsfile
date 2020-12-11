@@ -20,7 +20,7 @@ pipeline {
 		}
 		stage('Deliver') {
 			steps {
-				sh 'chown root ./scripts'
+				sh 'chmod +x ./scripts/deliver.sh'
 				sh './scripts/deliver.sh'
 			}
 		}

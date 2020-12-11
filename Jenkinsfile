@@ -20,6 +20,7 @@ pipeline {
 		}
 		stage('Deliver') {
 			steps {
+				sh 'chown root ./scripts'
 				sh './scripts/deliver.sh'
 			}
 		}

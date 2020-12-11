@@ -1,1 +1,2 @@
 echo "Deploy"
+docker --help

@@ -16,6 +16,7 @@ pipeline {
 	stages {
 		stage('Test app') { 
 			steps {
+				sh 'echo $USER'
 				sh 'cargo test' 
 			}
 		}

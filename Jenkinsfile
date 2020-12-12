@@ -4,12 +4,7 @@ pipeline {
     registryCredential = 'danitrod'
     dockerImage = ''
   }
-	agent {
-		docker {
-			image 'rust:alpine'
-			args '--user root -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
-		}
-	}
+	agent any
 	options {
 		skipStagesAfterUnstable()
 	}

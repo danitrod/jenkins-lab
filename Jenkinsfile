@@ -26,6 +26,8 @@ pipeline {
 		}
 		stage('Build Docker image') {
 			steps{
+				sh 'whoami'
+				sh 'grep docker /etc/group'
         script {
           dockerImage = docker.build imagename
         }

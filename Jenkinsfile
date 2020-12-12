@@ -28,8 +28,8 @@ pipeline {
 			steps{
 				sh 'apk --no-cache add shadow'
 				sh 'apk --no-cache add sudo'
+				sh 'sudo groupadd docker'
 				sh 'sudo cat /etc/group'
-				sh 'sudo grep docker /etc/group'
 				sh 'sudo usermod -aG docker $(whoami)'
 				sh 'newgrp docker'
         script {

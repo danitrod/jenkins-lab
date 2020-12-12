@@ -26,13 +26,6 @@ pipeline {
 		}
 		stage('Build Docker image') {
 			steps{
-				sh 'apk --no-cache add shadow'
-				sh 'apk --no-cache add sudo'
-				sh 'sudo groupadd docker'
-				sh 'sudo cat /etc/group'
-				sh 'sudo usermod -aG docker $(whoami)'
-				sh 'newgrp docker'
-				sh 'sudo docker build -t danitrod/rust-calculator'
         script {
           dockerImage = docker.build imagename
         }

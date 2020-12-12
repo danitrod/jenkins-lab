@@ -27,7 +27,10 @@ pipeline {
 		stage('Build Docker image') {
 			steps{
 				sh 'whoami'
-				sh 'grep docker /etc/group'
+				sh 'apk --no-cache add shadow'
+				sh 'apk --no-cache add sudo'
+				sh 'sudo usermod -aG docker $(whoami)'
+				sh 'newgrp docker'
         script {
           dockerImage = docker.build imagename
         }

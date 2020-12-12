@@ -1,4 +1,9 @@
 pipeline {
+	environment {
+    imagename = "danitrod/rust-calculator"
+    registryCredential = 'danitrod-dockerhub'
+    dockerImage = ''
+  }
 	agent {
 		docker {
 			image 'rust:alpine'
@@ -8,21 +13,38 @@ pipeline {
 		skipStagesAfterUnstable()
 	}
 	stages {
-		stage('Test') { 
+		stage('Test app') { 
 			steps {
 				sh 'cargo test' 
 			}
 		}
-		stage('Build') {
+		stage('Build app') {
 			steps {
 				sh 'cargo build --release'
 			}
 		}
-		stage('Deliver') {
-			steps {
-				sh 'chmod +x ./scripts/deliver.sh'
-				sh './scripts/deliver.sh'
-			}
+		stage('Build Docker image') {
+			steps{
+        script {
+          dockerImage = docker.build imagename
+        }
+      }
 		}
+		stage('Deploy Docker image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push("$BUILD_NUMBER")
+             dockerImage.push('latest')
+          }
+        }
+      }
+    }
+		stage('Cleanup Docker image') {
+      steps{
+        sh "docker rmi $imagename:$BUILD_NUMBER"
+        sh "docker rmi $imagename:latest"
+      }
+    }
 	}
 }

@@ -16,6 +16,7 @@ pipeline {
 	stages {
 		stage('Test app') { 
 			steps {
+				sh 'echo $JENKINS_USER'
 				sh 'cargo test' 
 			}
 		}
@@ -26,9 +27,7 @@ pipeline {
 		}
 		stage('Build Docker image') {
 			steps{
-				sh 'apk --no-cache add shadow'
-				sh 'usermod -aG docker jenkins'
-				sh 'docker --help'
+				sh './scripts/docker_group.sh'
         script {
           dockerImage = docker.build imagename
         }

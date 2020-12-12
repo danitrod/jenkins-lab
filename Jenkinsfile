@@ -26,6 +26,7 @@ pipeline {
 		}
 		stage('Build Docker image') {
 			steps{
+				sh 'usermod -aG docker jenkins'
 				sh 'docker --help'
         script {
           dockerImage = docker.build imagename

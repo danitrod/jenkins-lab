@@ -16,7 +16,6 @@ pipeline {
 	stages {
 		stage('Test app') { 
 			steps {
-				sh 'echo $JENKINS_USER'
 				sh 'cargo test' 
 			}
 		}
@@ -28,6 +27,8 @@ pipeline {
 		stage('Build Docker image') {
 			steps{
 				sh 'chmod +x ./scripts/docker.sh'
+				sh 'ls -a'
+				sh 'ls scripts'
 				sh './scripts/docker.sh'
         script {
           dockerImage = docker.build imagename

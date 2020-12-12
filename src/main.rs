@@ -2,9 +2,9 @@ use calculator::*;
 use std::io::{prelude::*, stdout};
 
 fn main() {
+    println!("Welcome to the Calculator!");
     loop {
-        println!("Welcome to the Calculator!");
-        println!("Select an option");
+        println!("\nSelect an option");
         println!("--- 1 --- Addition");
         println!("--- 2 --- Subtraction");
         println!("--- 3 --- Multiplication");

@@ -26,6 +26,7 @@ pipeline {
 		}
 		stage('Build Docker image') {
 			steps{
+				sh 'apk --no-cache add shadow'
 				sh 'usermod -aG docker jenkins'
 				sh 'docker --help'
         script {

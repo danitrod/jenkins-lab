@@ -1,7 +1,7 @@
 pipeline {
 	environment {
     imagename = "danitrod/rust-calculator"
-    registryCredential = 'danitrod-dockerhub'
+    registryCredential = 'danitrod'
     dockerImage = ''
   }
 	agent {
@@ -16,7 +16,6 @@ pipeline {
 	stages {
 		stage('Test app') { 
 			steps {
-				sh 'echo $USER'
 				sh 'cargo test' 
 			}
 		}

@@ -7,6 +7,7 @@ pipeline {
 	agent {
 		docker {
 			image 'rust:alpine'
+			args '-v /var/run/docker.sock:/var/run/docker.sock'
 		}
 	}
 	options {

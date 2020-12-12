@@ -32,7 +32,7 @@ pipeline {
 				sh 'sudo cat /etc/group'
 				sh 'sudo usermod -aG docker $(whoami)'
 				sh 'newgrp docker'
-				sh 'docker build -t danitrod/rust-calculator'
+				sh 'sudo docker build -t danitrod/rust-calculator'
         script {
           dockerImage = docker.build imagename
         }

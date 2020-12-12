@@ -27,8 +27,8 @@ pipeline {
 		}
 		stage('Build Docker image') {
 			steps{
-				sh 'chmod +x ./scripts/docker_group.sh'
-				sh './scripts/docker_group.sh'
+				sh 'chmod +x ./scripts/docker.sh'
+				sh './scripts/docker.sh'
         script {
           dockerImage = docker.build imagename
         }

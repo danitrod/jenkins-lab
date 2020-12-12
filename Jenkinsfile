@@ -26,10 +26,6 @@ pipeline {
 		}
 		stage('Build Docker image') {
 			steps{
-				sh 'chmod +x ./scripts/docker.sh'
-				sh 'ls -a'
-				sh 'ls scripts'
-				sh '/var/jenkins_home/workspace/rust-calculator/scripts/docker.sh'
         script {
           dockerImage = docker.build imagename
         }

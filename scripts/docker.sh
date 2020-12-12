@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+echo "Starting"
+
 DOCKER_SOCKET=/var/run/docker.sock
 DOCKER_GROUP=docker
 

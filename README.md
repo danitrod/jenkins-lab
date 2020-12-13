@@ -20,11 +20,15 @@ A aplicação é uma calculadora com interface de comando de linha simples feita
 
 5. `Cleanup Docker image`: limpa o contexto do agente, removendo as imagens buildadas do contêiner.
 
+Abaixo está uma captura de tela com a _pipeline_ executada com sucesso.
+
+![Execução da pipeline](./doc/source/images/pipeline.jpg)
+
 ## Execução
 
 Após a execução da _pipeline_, a imagem da calculadora está disponível publicamente no Docker Hub sob o nome `danitrod/rust-calculator`. Você pode executar a aplicação com o comando `docker run -it danitrod/rust-calculator:latest`, como na imagem abaixo:
 
-![test](./doc/source/images/execution.jpg)
+![Execução do programa](./doc/source/images/execution.jpg)
 
 ## Licença
 

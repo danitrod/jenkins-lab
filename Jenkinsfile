@@ -6,7 +6,7 @@ pipeline {
 	}
 	agent {
 		docker {
-			// My image with rust + docker
+			// My image with Rust + Docker (./docker/agent-image/Dockerfile)
 			image 'danitrod/rust-docker:latest'
 		}
 	}

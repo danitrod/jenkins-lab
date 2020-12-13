@@ -1,7 +1,7 @@
 pipeline {
 	environment {
     imagename = "danitrod/rust-calculator"
-    registryCredential = 'danitrod'
+    registryCredential = 'Dockerhub-creds'
     dockerImage = ''
   }
 	agent {

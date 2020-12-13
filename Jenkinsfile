@@ -4,7 +4,12 @@ pipeline {
     registryCredential = 'danitrod'
     dockerImage = ''
   }
-	agent any
+	agent {
+		docker {
+			image 'danitrod/rust-docker:latest'
+			args '--user root -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
+		}
+	}
 	options {
 		skipStagesAfterUnstable()
 	}

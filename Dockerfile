@@ -1,10 +1,9 @@
-FROM rust:alpine
+# This Dockerfile is for the application, built in the Jenkins pipeline
+
+FROM alpine:3.11
 
 WORKDIR /app
 
-COPY src/ src/
-COPY Cargo* ./
+COPY ./target/release/calculator ./exec
 
-RUN cargo build --release
-
-CMD ./target/release/calculator
+CMD ./exec

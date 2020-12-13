@@ -44,7 +44,7 @@ pipeline {
 		}
 		stage('Cleanup Docker image') {
 			steps {
-				sh "docker rmi $imagename:$BUILD_NUMBER"
+				sh "docker rmi $imagename:1.$BUILD_NUMBER"
 				sh "docker rmi $imagename:latest"
 			}
 		}

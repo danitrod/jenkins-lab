@@ -26,7 +26,7 @@ Abaixo está uma captura de tela com a _pipeline_ executada com sucesso.
 
 ## Execução
 
-Após a execução da _pipeline_, a imagem da calculadora está disponível publicamente no Docker Hub sob o nome `danitrod/rust-calculator`. Você pode executar a aplicação com o comando `docker run -it danitrod/rust-calculator:latest`, como na imagem abaixo:
+Após a execução da _pipeline_, a imagem da calculadora fica disponível publicamente no Docker Hub sob o nome `danitrod/rust-calculator`. Você pode executar a aplicação com o comando `docker run -it danitrod/rust-calculator:latest`, como na imagem abaixo:
 
 ![Execução do programa](./doc/source/images/execution.jpg)
 

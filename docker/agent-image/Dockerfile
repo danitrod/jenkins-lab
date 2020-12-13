@@ -1,4 +1,5 @@
-# This Dockerfile is for the Jenkins pipeline agent, it has docker installed and will push the application image to Docker Hub
+# This Dockerfile is for the Jenkins pipeline agent, it has Docker and Rust installed.
+# It will test the application, build it, then build and push the application image to Docker Hub
 
 FROM rust:alpine3.11
 

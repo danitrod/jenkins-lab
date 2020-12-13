@@ -11,6 +11,7 @@ pipeline {
 		}
 	}
 	options {
+		// If any stages fail, end the pipeline execution
 		skipStagesAfterUnstable()
 	}
 	stages {

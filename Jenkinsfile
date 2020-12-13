@@ -1,7 +1,7 @@
 pipeline {
 	environment {
 		imagename = "danitrod/rust-calculator"
-		registryCredential = 'Dockerhub-creds' // ID of Credential created in Jenkins
+		registryCredential = 'Dockerhub-creds' // ID of Docker credential created in Jenkins
 		dockerImage = ''
 	}
 	agent {

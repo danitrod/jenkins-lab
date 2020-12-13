@@ -1,13 +1,13 @@
 pipeline {
 	environment {
-    imagename = "danitrod/rust-calculator"
-    registryCredential = 'Dockerhub-creds'
-    dockerImage = ''
-  }
+		imagename = "danitrod/rust-calculator"
+		registryCredential = 'Dockerhub-creds' // ID of Credential created in Jenkins
+		dockerImage = ''
+	}
 	agent {
 		docker {
+			// My image with rust + docker
 			image 'danitrod/rust-docker:latest'
-			// args '--user root -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
 		}
 	}
 	options {
@@ -25,27 +25,28 @@ pipeline {
 			}
 		}
 		stage('Build Docker image') {
-			steps{
-        script {
-          dockerImage = docker.build imagename
-        }
-      }
+			steps {
+				script {
+					dockerImage = docker.build imagename
+				}
+			}
 		}
 		stage('Deploy Docker image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("$BUILD_NUMBER")
-             dockerImage.push('latest')
-          }
-        }
-      }
-    }
+			steps {
+				script {
+					docker.withRegistry( '', registryCredential ) {
+						// Push with a number and latest
+						dockerImage.push("1.$BUILD_NUMBER")
+						dockerImage.push('latest')
+					}
+				}
+			}
+		}
 		stage('Cleanup Docker image') {
-      steps{
-        sh "docker rmi $imagename:$BUILD_NUMBER"
-        sh "docker rmi $imagename:latest"
-      }
-    }
+			steps {
+				sh "docker rmi $imagename:$BUILD_NUMBER"
+				sh "docker rmi $imagename:latest"
+			}
+		}
 	}
 }
